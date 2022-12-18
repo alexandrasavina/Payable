@@ -24,7 +24,8 @@ export class ServicesComponent {
   ) { }
 
   ngOnInit() {
-    this.services = JSON.parse(this.localStorage.getData('provider-services') ?? '');
+    const servicesString = this.localStorage.getData('provider-services');
+    if (servicesString) this.services = JSON.parse(servicesString);
     this.dataSource.data = this.services;
     this.form = this.fb.group({
       id: 0,
